@@ -49,7 +49,7 @@
                     required="rental"
                 />
         </label>
-        <xpath expr="//field[@name='order_line']/tree" position="attributes">
+        <xpath expr="//field[@name='order_line']/list" position="attributes">
             <attribute name="editable" />
         </xpath>
     </field>

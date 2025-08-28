@@ -14,14 +14,14 @@
                 <group
                     name="rental"
                     string="Rental"
-                    invisible="detailed_type != 'service'"
+                    invisible="type != 'service'"
                 >
                     <field name="rented_product_id" />
                 </group>
                 <group
                     string="Rental Services"
                     name="rental_services"
-                    invisible="detailed_type == 'service'"
+                    invisible="type == 'service'"
                 >
                     <button
                         colspan="2"
@@ -50,16 +50,16 @@
                 <label
                     for="rented_product_tmpl_id"
                     string="Rental"
-                    invisible="detailed_type != 'service' or product_variant_count &gt; 1"
+                    invisible="type != 'service' or product_variant_count &gt; 1"
                 />
                 <field
                     name="rented_product_tmpl_id"
-                    invisible="detailed_type != 'service' or product_variant_count &gt; 1"
+                    invisible="type != 'service' or product_variant_count &gt; 1"
                 />
                 <label
                     for="rental_service_tmpl_ids"
                     string="Rental Services"
-                    invisible="detailed_type == 'service' or product_variant_count &gt; 1"
+                    invisible="type == 'service' or product_variant_count &gt; 1"
                 />
                 <field
                     name="rental_service_tmpl_ids"
@@ -70,7 +70,7 @@
                     type="action"
                     name="%(sale_rental.create_rental_product_action)d"
                     string="Create Rental Service"
-                    invisible="detailed_type == 'service' or product_variant_count &gt; 1"
+                    invisible="type == 'service' or product_variant_count &gt; 1"
                 />
             </group>
         </field>
