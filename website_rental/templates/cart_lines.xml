@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cart_lines" inherit_id="website_sale.cart_lines">
+        <xpath expr="//div[@name='website_sale_cart_line_quantity']" position="attributes">
+            <attribute name="t-att-class">not line.product_id.rented_product_id and 'css_quantity input-group mb-2' or 'd-none'</attribute>
+        </xpath>
+        <xpath expr="//div[@name='website_sale_cart_line_quantity']" position="after">
+            <div t-if="line.product_id.rented_product_id" class="css_quantity input-group mb-2">
+                <span t-field="line.start_date" t-options='{"widget": "date"}'/> - <span t-field="line.end_date" t-options='{"widget": "date"}'/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="cart_line_product_link" inherit_id="website_sale.cart_line_product_link">
+        <xpath expr="//a[@t-att-href]" position="attributes">
+            <attribute name="t-att-href">line.product_id.rented_product_id and line.product_id.rented_product_id.website_url or line.product_id.website_url</attribute>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+            <div t-if="product.rental" class="row rental_calendar">
+                <div class="row input-daterange input-group" id="product-datepicker">
+                    <div id="start_date" class="col-6 form-item bg_calendar daterangepicker">
+                        <label>Pickup</label>
+                        <input type="date" t-att-min="min_date" t-att-max="max_date" class="form-control" id="start-date" name="start" t-att-value="start_date" />
+                    </div>
+                    <div id="end_date" class="col-6 form-item bg_calendar daterangepicker">
+                        <label>Delivery</label>
+                        <input type="date" t-att-min="end_date" t-att-max="max_date" class="form-control" id="start-date" name="end" t-att-value="end_date" />
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6 form-item">
+                        <button class="btn btn-secondary btn-block mt-2 reset_dates" type="button">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="col-6 form-item">
+                        <input type="submit" class="btn btn-primary btn-block mt-2 book_button" value="Book"/>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12 rental_error form-item">
+
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
+            <attribute name="t-att-class">
+                'd-none d-flex flex-wrap align-items-center' if product.rental else 'd-flex flex-wrap align-items-center'
+            </attribute>
+        </xpath>
+    </template>
+</odoo>
