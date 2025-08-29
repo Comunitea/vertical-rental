@@ -19,7 +19,7 @@
 ##############################################################################
 {
     "name": "Website rental",
-    "version": "17.0.0.0.1",
+    "version": "18.0.0.0.1",
     "summary": "Website rental",
     "category": "Ecommerce",
     "author": "Comunitea",
