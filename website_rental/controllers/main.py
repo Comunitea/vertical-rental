@@ -8,7 +8,6 @@ from odoo import http, _
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.website.controllers.main import Website
-from odoo.addons.http_routing.models.ir_http import slug
 
 class Website(Website):
     def get_rental_domain(self):
