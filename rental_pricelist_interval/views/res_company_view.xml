@@ -10,11 +10,11 @@
                     <page string="Rental Interval Prices">
                         <group>
                             <field name="rental_price_interval_rule_ids" nolabel="1">
-                                <tree editable="buttom">
+                                <list editable="buttom">
                                     <field name="name" />
                                     <field name="min_quantity" />
                                     <field name="factor" />
-                                </tree>
+                                </list>
                             </field>
                         </group>
                     </page>

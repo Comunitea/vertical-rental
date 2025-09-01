@@ -43,7 +43,7 @@
                         nolabel="1"
                         colspan="2"
                     >
-                            <tree editable="bottom">
+                            <list editable="bottom">
                                 <field name="min_quantity" />
                                 <field
                                 name="fixed_price"
@@ -57,7 +57,7 @@
                                 <field name="product_id" invisible="1" />
                                 <field name="pricelist_id" invisible="1" />
                                 <field name="company_id" invisible="1" />
-                            </tree>
+                            </list>
                         </field>
                     </group>
                 </xpath>
