@@ -94,12 +94,6 @@
             >
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath
-                expr="//group[@name='sale_info']//field[@name='analytic_account_id']"
-                position="attributes"
-            >
-                <attribute name="invisible">1</attribute>
-            </xpath>
             <!-- Sheet -->
             <xpath expr="//field[@name='partner_id']" position="before">
                 <field
@@ -113,16 +107,6 @@
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <separator colspan="2" />
                 <field name="client_order_ref" string="Order Reference" />
-            </xpath>
-            <xpath expr="//label[@for='pricelist_id']" position="before">
-                <separator colspan="2" />
-                <field
-                    name="analytic_account_id"
-                    context="{'default_partner_id':partner_invoice_id, 'default_name':name}"
-                    readonly="invoice_count > 0 and state == 'sale'"
-                    groups="analytic.group_analytic_accounting"
-                    force_save="1"
-                />
             </xpath>
             <!-- Sale Order Lines -->
             <!-- Hide fields inserted by sale module to move them to new location -->
