@@ -94,12 +94,13 @@ class WebsiteSaleRental(WebsiteSale):
         if not start_date or not end_date:
             return request.redirect(product.product_tmpl_id.website_url)
 
-        rental_service = product.rental_service_ids.filtered(
+        rental_service = product.filtered(
             lambda x: not x.website_id.id or x.website_id.id in [False, request.website.id] and x._get_availability_in_dates(
                 datetime.strptime(start_date, "%Y-%m-%d").date(),
                 datetime.strptime(end_date, "%Y-%m-%d").date()
             )
         )
+        import ipdb; ipdb.set_trace()
 
         if rental_service:
             res = super(WebsiteSaleRental, self).cart_update(
