@@ -100,7 +100,6 @@ class WebsiteSaleRental(WebsiteSale):
                 datetime.strptime(end_date, "%Y-%m-%d").date()
             )
         )
-        import ipdb; ipdb.set_trace()
 
         if rental_service:
             res = super(WebsiteSaleRental, self).cart_update(
