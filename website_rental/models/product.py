@@ -37,6 +37,7 @@ class ProductProduct(models.Model):
         rented_products = self.env['product.product'].search([
             ('rented_product_id', '=', self.id),
         ])
+        rented_products += self
         if pricelist:
             self = self.with_context(pricelist=pricelist)
         delta = relativedelta.relativedelta(start_date, datetime.today())
@@ -47,28 +48,25 @@ class ProductProduct(models.Model):
             end = end_date + timedelta(days=1)
             dates = [start_date + timedelta(days=x) for x in range(0, (end - start_date).days)]
         for cur_date in dates:
-            is_available = True
             domain = [
                 ("rental_product_id", "=", self.id),
                 ("start_date", "<=", cur_date),
-                ("end_date", ">=", cur_date - timedelta(days=1)),
+                ("end_date", ">=", cur_date),
                 ("state", "in", ["ordered", "out", "sell_progress", "sold"]),
             ]
             rental = self.env["sale.rental"].sudo().search(domain)
             if rental:
-                is_available = False
-                return is_available
+                return False
 
             lines_domain = [
                 ("product_id", "in", rented_products.ids),
                 ("start_date", "<=", cur_date),
-                ("end_date", ">=", cur_date - timedelta(days=1)),
+                ("end_date", ">=", cur_date),
                 ("validity_date", ">=", date.today()),
-                ("state", "in", ["sent", "draft"]),
+                ("state", "in", ["sent", "draft", "sale"]),
             ]
             order_lines = self.env["sale.order.line"].sudo().search(lines_domain)
             if order_lines:
-                is_available = False
-                return is_available
+                return False
 
         return True
