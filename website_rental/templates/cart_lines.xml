@@ -11,9 +11,9 @@
         </xpath>
     </template>
 
-    <template id="cart_line_product_link" inherit_id="website_sale.cart_line_product_link">
+    <!-- <template id="cart_line_product_link" inherit_id="website_sale.cart_line_product_link">
         <xpath expr="//a[@t-att-href]" position="attributes">
             <attribute name="t-att-href">line.product_id.rented_product_id and line.product_id.rented_product_id.website_url or line.product_id.website_url</attribute>
         </xpath>
-    </template>
+    </template> -->
 </odoo>
