@@ -58,15 +58,23 @@ class ProductProduct(models.Model):
             if rental:
                 return False
 
-            lines_domain = [
+            lines_domain_draft = [
                 ("product_id", "in", rented_products.ids),
                 ("start_date", "<=", cur_date),
                 ("end_date", ">=", cur_date),
                 ("validity_date", ">=", date.today()),
-                ("state", "in", ["sent", "draft", "sale"]),
+                ("state", "in", ["sent", "draft"]),
             ]
-            order_lines = self.env["sale.order.line"].sudo().search(lines_domain)
-            if order_lines:
+            lines_domain_sale = [
+                ("product_id", "in", rented_products.ids),
+                ("start_date", "<=", cur_date),
+                ("end_date", ">=", cur_date),
+                ("state", "in", ["sale"]),
+            ]
+            order_lines_draft = self.env["sale.order.line"].sudo().search(lines_domain_draft)
+            order_lines_sale = self.env["sale.order.line"].sudo().search(lines_domain_sale)
+
+            if  order_lines_sale or order_lines_draft:
                 return False
 
         return True
